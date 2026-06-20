@@ -1,4 +1,4 @@
-from argparse import Namespace, ArgumentParser
+from argparse import ArgumentParser, Namespace
 from collections import Counter
 from pathlib import Path
 
@@ -31,6 +31,15 @@ def print_counter(title: str, counter: Counter) -> None:
     print(f"{bar}\n{title_line}\n{bar}\n\n{text}\n")
 
 
+def diff_decks(
+    counter_a: Counter, counter_b: Counter,
+) -> tuple[Counter, Counter, Counter]:
+    a_not_b = counter_a - counter_b
+    b_not_a = counter_b - counter_a
+    intersection = counter_a & counter_b
+    return a_not_b, b_not_a, intersection
+
+
 def parse_args() -> Namespace:
     parser = ArgumentParser()
     parser.add_argument("deck_a", type=Path)
@@ -47,9 +56,7 @@ def main():
     counter_a = to_counter(text_a)
     counter_b = to_counter(text_b)
 
-    a_not_b = counter_a - counter_b
-    b_not_a = counter_b - counter_a
-    intersection = counter_a & counter_b
+    a_not_b, b_not_a, intersection = diff_decks(counter_a, counter_b)
 
     print_counter("Intersection", intersection)
     print_counter("In A but not B", a_not_b)

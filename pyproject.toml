@@ -1,0 +1,8 @@
+[project]
+name = "deckdiff"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+dev = ["hypothesis>=6.155.6", "pytest>=9.1.1"]
