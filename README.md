@@ -4,24 +4,16 @@ Tiny quick script to diff _Magic: The Gathering_ decks. No runtime dependencies,
 
 Tested with Python 3.11 to 3.14.
 
-## Setup
-
-No runtime deps, script just needs Python. For dev (tests etc.), use [uv](https://docs.astral.sh/uv/):
-
-```
-uv sync
-```
-
 ## Usage
 
 - Export the decks you want to diff to text files.
 - Each line needs to have the format `<amount> <name>`, so e.g. `1 Path to Exile` or `5 Island`.
-- Run the script with Python: `python deckdiff.py A.txt B.txt`
+- Download and run the script with Python: `python deckdiff.py A.txt B.txt`
 - Output is printed to standard out
 
 ## Tests
 
-Tests use `pytest` + `hypothesis` (property-based), dev deps in `pyproject.toml`.
+Tests use `pytest` + `hypothesis` (property-based), dev deps in `pyproject.toml`. Setup using [uv](https://docs.astral.sh/uv/).
 
 ```
 uv sync
